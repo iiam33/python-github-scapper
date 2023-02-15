@@ -1,7 +1,7 @@
 # python-github-scapper
 
 Steps need to be taken to test the code:
-1. git clone 
+1. ```git clone https://github.com/iiam33/python-github-scapper.git```
 2. ```cd python-github-scapper```
 3. ```pip install -r requirements.txt```
 4. to run the code ```python main.py```
