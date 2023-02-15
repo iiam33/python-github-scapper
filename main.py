@@ -1,12 +1,12 @@
 import requests
+from decouple import config
 
 
 class Main(object):
     def __init__(self):
+        self.access_token = config("ACCESS_TOKEN")
         self.url = "https://api.github.com/repos/freeCodeCamp/freeCodeCamp/contributors"
-        self.headers = {
-            "Authorization": "Bearer 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"
-        }
+        self.headers = {"Authorization": "Bearer " + self.access_token}
 
     @property
     def get(self):
@@ -21,9 +21,7 @@ class Main(object):
             for body in response_body:
                 user = requests.get(
                     f'https://api.github.com/users/{body["login"]}',
-                    headers={
-                        "Authorization": "Bearer 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"
-                    },
+                    headers={"Authorization": "Bearer " + self.access_token},
                 )
 
                 data = {
@@ -35,7 +33,7 @@ class Main(object):
 
             new_user_list = sorted(
                 user_list, key=lambda d: d["contributions"], reverse=True
-            )[:5]
+            )[:25]
 
             for user in new_user_list:
                 print(user)
