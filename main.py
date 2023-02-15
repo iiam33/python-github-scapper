@@ -35,7 +35,7 @@ class Main(object):
 
             new_user_list = sorted(
                 user_list, key=lambda d: d["contributions"], reverse=True
-            )[:5]
+            )[:25]
 
             for user in new_user_list:
                 print(user)
